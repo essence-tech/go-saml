@@ -245,6 +245,17 @@ func NewSignedResponse() *Response {
 				},
 				NotBefore:    time.Now().Add(time.Minute * -5).UTC().Format(time.RFC3339Nano),
 				NotOnOrAfter: time.Now().Add(time.Minute * 5).UTC().Format(time.RFC3339Nano),
+				AudienceRestriction: AudienceRestriction{
+					XMLName: xml.Name{
+						Local: "saml:AudienceRestriction",
+					},
+					Audience: Audience{
+						XMLName: xml.Name{
+							Local: "saml:Audience",
+						},
+						Value: "",
+					},
+				},
 			},
 			AttributeStatement: AttributeStatement{
 				XMLName: xml.Name{
